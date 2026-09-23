@@ -45,19 +45,22 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         working-directory: Week-6/ci-project
-
       # Day 3 - Install quality tools
       - name: Install Day3 dependencies
-        run: pip install -r Week-6/Day3/requirements.txt
+        run: pip install -r requirements.txt
+        working-directory: Week-6/Day3
 
       # Day 3 - Tests + Coverage
       - name: Run Day3 tests with coverage
-        run: python -m pytest Week-6/Day3 --cov=Week-6/Day3/app --cov-fail-under=80
+        run: python -m pytest --cov=app --cov-fail-under=80
+        working-directory: Week-6/Day3
 
       # Day 3 - Linting
       - name: Run Ruff lint
-        run: ruff check Week-6/Day3
+        run: ruff check .
+        working-directory: Week-6/Day3
 
       # Day 3 - Formatting
       - name: Check Ruff formatting
-        run: ruff format --check Week-6/Day3
+        run: ruff format --check .
+        working-directory: Week-6/Day3
