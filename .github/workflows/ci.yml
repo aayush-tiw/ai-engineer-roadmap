@@ -3,6 +3,7 @@ name: CI
 on:
   push:
     paths:
+      - ".github/workflows/ci.yml"
       - "Week-6/ci-project/**"
       - "Week-6/Day3/**"
 
