@@ -23,3 +23,20 @@ jobs:
 
       - name: Run tests
         run: pytest Week-6/ci-project
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Node dependencies
+        run: npm ci
+        working-directory: Week-6/ci-project
+
+      - name: Install Playwright browser
+        run: npx playwright install chromium
+        working-directory: Week-6/ci-project
+
+      - name: Run Playwright tests
+        run: npx playwright test
+        working-directory: Week-6/ci-project
