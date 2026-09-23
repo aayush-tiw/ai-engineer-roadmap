@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "Week-6/ci-project/**"
+      - "Week-6/Day3/**"
 
 jobs:
   test:
@@ -18,12 +19,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      # Day 2 - Python dependencies
+      - name: Install ci-project dependencies
         run: pip install -r Week-6/ci-project/requirements.txt
 
-      - name: Run tests
+      # Day 2 - Python tests
+      - name: Run ci-project tests
         run: pytest Week-6/ci-project
 
+      # Day 2 - Playwright
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -40,3 +44,19 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         working-directory: Week-6/ci-project
+
+      # Day 3 - Install quality tools
+      - name: Install Day3 dependencies
+        run: pip install -r Week-6/Day3/requirements.txt
+
+      # Day 3 - Tests + Coverage
+      - name: Run Day3 tests with coverage
+        run: python -m pytest Week-6/Day3 --cov=Week-6/Day3/app --cov-fail-under=80
+
+      # Day 3 - Linting
+      - name: Run Ruff lint
+        run: ruff check Week-6/Day3
+
+      # Day 3 - Formatting
+      - name: Check Ruff formatting
+        run: ruff format --check Week-6/Day3
