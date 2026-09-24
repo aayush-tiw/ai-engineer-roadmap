@@ -23,7 +23,5 @@ jobs:
         run: pip install -r Week-6/Day3/requirements.txt
 
       - name: Run test
-        run:
-         cd Week-6/Day3
-         pytest
-
+        run: pytest
+        working-directory: Week-6/Day3
