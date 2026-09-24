@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: day3-application
-          path: Week-6/Day3/artifact
+          path: artifact
