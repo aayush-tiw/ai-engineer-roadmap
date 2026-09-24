@@ -29,9 +29,9 @@ jobs:
       - name: Create artifact
         run: |
           mkdir artifact
-          cp -r app artifact/
-          cp -r tests artifact/
-          cp requirements.txt artifact/
+          cp -r Week-6/Day3/app artifact/
+          cp -r Week-6/Day3/tests artifact/
+          cp Week-6/Day3/requirements.txt artifact/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
