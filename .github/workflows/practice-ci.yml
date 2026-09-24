@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "Week-6/Day3/**"
+      - ".github/workflows/practice-ci.yml"
 
 jobs:
   test:
