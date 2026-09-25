@@ -36,3 +36,11 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t day5-fastapi ./Week-6/Day3 
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy application
+        run: echo "Deploying application..."
