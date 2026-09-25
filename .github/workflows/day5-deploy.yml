@@ -26,4 +26,12 @@ jobs:
       run: python -m pytest
       working-directory: Week-6/Day3
 
+  build:
+   needs: test
 
+   step:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Docker image
+      run: docker build -t day5-fastapi ./Week-6/Day3 
