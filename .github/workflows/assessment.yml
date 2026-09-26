@@ -3,7 +3,7 @@ name : Assessment CI
 on:
  push:
   paths:
-   - "Week-6/Day3/**
+   - "Week-6/Day3/**"
    - ".github/workflows/assessment.yml"
 
 jobs:
@@ -12,30 +12,32 @@ jobs:
 
     steps:
      - name: Checkout code
-       uses: actions/version@v4
+       uses: actions/checkout@v4
 
      - name: Install Python
-       uses: actions/python@v5
+       uses: actions/setup-python@v5
        with: 
         python-version : "3.12"
 
      - name: Install dependencies
-       run: pip install -r "Week-6/requirements.txt"
+       run: pip install -r Week-6/Day3/requirements.txt
 
      - name: Run Tests
        run: python -m pytest
        working-directory: Week-6/Day3
 
      - name: run ruff
-       run: pip install ruff
-            ruff check.
+       run: |
+         pip install ruff
+         ruff check .
        working-directory: Week-6/Day3
 
      - name: doker add
-       run: docker build t -Day6 ./Week-6/Day3
+       run: docker build -t assessment-fastapi ./Week-6/Day3
        
      - name: upload acticfact
-       run : mkdir artifact
+       run : |
+          mkdir artifact
           cp -r Week-6/Day3/app artifact/
           cp -r Week-6/Day3/tests artifact/
           cp Week-6/Day3/requirements.txt artifact/
@@ -43,5 +45,5 @@ jobs:
      - name: doenload acticfact
        uses: actions/upload-artifact@v4
        with: 
-        name: assessment
+        name: assessment-application
         path: artifact
