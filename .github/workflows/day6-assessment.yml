@@ -25,3 +25,9 @@ jobs:
       - name: Run tests
         run: python -m pytest
         working-directory: Week-6/Day3
+
+      - name: Run Ruff
+        run: |
+          pip install ruff
+          ruff check .
+        working-directory: Week-6/Day3
