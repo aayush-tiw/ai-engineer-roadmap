@@ -31,3 +31,6 @@ jobs:
           pip install ruff
           ruff check .
         working-directory: Week-6/Day3
+      
+      - name: Build Docker image
+        run: docker build -t day6-fastapi ./Week-6/Day3
