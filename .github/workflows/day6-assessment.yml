@@ -34,3 +34,16 @@ jobs:
       
       - name: Build Docker image
         run: docker build -t day6-fastapi ./Week-6/Day3
+
+      - name: Create artifact
+        run: |
+          mkdir artifact
+          cp -r Week-6/Day3/app artifact/
+          cp -r Week-6/Day3/tests artifact/
+          cp Week-6/Day3/requirements.txt artifact/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: day6-application
+          path: artifact
